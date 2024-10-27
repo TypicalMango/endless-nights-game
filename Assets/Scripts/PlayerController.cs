@@ -2,53 +2,87 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    public float maxHealth = 100f;
-    public float walkSpeed = 3f;
-    float horzInput;
-    float vertInput;
-    Rigidbody2D rb;
-    float playerHealth;
-    Vector3 mousePosition;
+    [SerializeField]
+    private float _maxHealth = 100f;
+    [SerializeField]
+    private float _walkSpeed = 3f;
+    private Vector2 _movementInput;
+    private Vector2 _smoothMovementInput;
+    private Vector2 _movementInputSmoothVelocity;
+    Rigidbody2D _rigidbody;
+    private float _playerHealth;
+    private Vector3 mousePosition;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        playerHealth = maxHealth;
-        // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _playerHealth = _maxHealth;
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        horzInput = Input.GetAxisRaw("Horizontal");
-        vertInput = Input.GetAxisRaw("Vertical");
-        if (horzInput != 0 && vertInput != 0)
-            {
-            rb.velocity = new Vector2(horzInput * walkSpeed / Mathf.Sqrt(2), vertInput * walkSpeed / Mathf.Sqrt(2));
-        }
-        else if (horzInput != 0 || vertInput != 0)
-            {
-            rb.velocity = new Vector2(horzInput * walkSpeed, vertInput * walkSpeed);
-        }
+        Debug.Log("Player Position: " + transform.position);
+        SetPlayerVelocity();
+        RotatePlayerToMouse();
+
+        // OLD MOVEMENT SCRIPT
+
+        // horzInput = Input.GetAxisRaw("Horizontal");
+        // vertInput = Input.GetAxisRaw("Vertical");
+        // if (horzInput != 0 && vertInput != 0)
+        //     {
+        //     _rigidbody.velocity = new Vector2(horzInput * _walkSpeed / Mathf.Sqrt(2), vertInput * _walkSpeed / Mathf.Sqrt(2));
+        // }
+        // else if (horzInput != 0 || vertInput != 0)
+        //     {
+        //     _rigidbody.velocity = new Vector2(horzInput * _walkSpeed, vertInput * _walkSpeed);
+        // }
         // else
         // {
-        //     rb.velocity = Vector2.zero;
+        //     _rigidbody.velocity = Vector2.zero;
         // }
     }
 
-    void LateUpdate() {
+    private void RotatePlayerToMouse()
+    {
+        if (Camera.main != null)
+    {
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - transform.position;
         transform.up = direction;
     }
+    else
+    {
+        Debug.LogWarning("Main Camera is not assigned in the scene.");
+    }
+    }
+
+    private void SetPlayerVelocity()
+    {
+        _smoothMovementInput = Vector2.SmoothDamp(
+                    _smoothMovementInput,
+                    _movementInput,
+                    ref _movementInputSmoothVelocity,
+                    0.1f
+                );
+        _rigidbody.velocity = _smoothMovementInput * _walkSpeed;
+    }
+
+    private void OnMove(InputValue inputValue) {
+        _movementInput = inputValue.Get<Vector2>();
+    }
+
 
     void OnCollisionEnter2D(Collision2D collision) {
         Debug.Log("Coillison");
-        playerHealth -= 10;
-        Debug.Log(playerHealth);
+        _playerHealth -= 10;
+        Debug.Log(_playerHealth);
     }
 }
