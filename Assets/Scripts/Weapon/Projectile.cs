@@ -9,8 +9,9 @@ public class Projectile : MonoBehaviour
         if (collision.GetComponent<EnemyMovement>())
         {
             OnHit(collision);
-            Destroy(gameObject);
         }
+        
+        Destroy(gameObject);
     }
 
     private static void OnHit(Collider2D collision)
