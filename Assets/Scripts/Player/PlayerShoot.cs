@@ -14,21 +14,23 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private float _timeBetweenShots;
     private bool _shootContinuously;
+    private bool _shootSingle;
     private float _lastShootTime;
 
     void Update()
     {
-        if (_shootContinuously)
+        if (_shootContinuously || _shootSingle)
         {
-            float timeSinceLastFire = Time.time - _lastShootTime;
-            if (timeSinceLastFire >= _timeBetweenShots) {
-                FireBullet();
+            float timeSinceLastShot = Time.time - _lastShootTime;
+            if (timeSinceLastShot >= _timeBetweenShots) {
+                shootProjectile();
                 _lastShootTime = Time.time;
+                _shootSingle = false;
             }
         }
     }
 
-    private void FireBullet()
+    private void shootProjectile()
     {
         GameObject projectile = Instantiate(_projectilePrefab, _weaponOffset.position, transform.rotation);
         Rigidbody2D rigidbody = projectile.GetComponent<Rigidbody2D>();
@@ -40,5 +42,8 @@ public class PlayerShoot : MonoBehaviour
     {
         _shootContinuously = inputValue.isPressed;
 
+        if (inputValue.isPressed) {
+            _shootSingle = true;
+        }
     }
 }
