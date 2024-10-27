@@ -6,14 +6,19 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    public float maxHealth = 100f;
     public float walkSpeed = 3f;
     float horzInput;
     float vertInput;
     Rigidbody2D rb;
+    float playerHealth;
+    Vector3 mousePosition;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerHealth = maxHealth;
+        // mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     // Update is called once per frame
@@ -29,11 +34,21 @@ public class PlayerController : MonoBehaviour
             {
             rb.velocity = new Vector2(horzInput * walkSpeed, vertInput * walkSpeed);
         }
-        /*
-        else
-        {
-            rb.velocity = new Vector2(0, 0);
-        }
-        */
+        // else
+        // {
+        //     rb.velocity = Vector2.zero;
+        // }
+    }
+
+    void LateUpdate() {
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePosition - transform.position;
+        transform.up = direction;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("Coillison");
+        playerHealth -= 10;
+        Debug.Log(playerHealth);
     }
 }
