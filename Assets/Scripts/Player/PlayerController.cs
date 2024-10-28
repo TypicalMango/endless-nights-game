@@ -8,8 +8,6 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float _maxHealth = 100f;
-    [SerializeField]
     private float _walkSpeed = 3f;
     private Vector2 _movementInput;
     private Vector2 _smoothMovementInput;
@@ -21,7 +19,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _playerHealth = _maxHealth;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
@@ -77,12 +74,5 @@ public class PlayerController : MonoBehaviour
 
     private void OnMove(InputValue inputValue) {
         _movementInput = inputValue.Get<Vector2>();
-    }
-
-
-    void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log("Coillison");
-        _playerHealth -= 10;
-        Debug.Log(_playerHealth);
     }
 }
