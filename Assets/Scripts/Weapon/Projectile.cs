@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<EnemyMovement>())
+
+        if (collision.CompareTag("Enemy"))
         {
             OnHit(collision);
         }
