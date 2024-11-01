@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7372977944976943971}
   - component: {fileID: 1382920356978541552}
   - component: {fileID: 2427831597724934833}
+  - component: {fileID: 4357223834053413364}
+  - component: {fileID: 598773694122870263}
   m_Layer: 0
   m_Name: StandingEnemy
   m_TagString: Enemy
@@ -140,6 +142,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageAmount: 10
   _attackCooldown: 3
+--- !u!114 &4357223834053413364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073202944493723907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0083af47eb5c6d34bb682ce4cf359ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _kilScore: 10
+--- !u!114 &598773694122870263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073202944493723907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d0792cd6ac4054d8cd9529d29f7dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealth: 100
+  _maximumHealth: 100
+  OnHealthZero:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2073202944493723907}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6974371466284469799
 GameObject:
   m_ObjectHideFlags: 0

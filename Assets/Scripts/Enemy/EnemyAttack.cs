@@ -14,12 +14,11 @@ public class EnemyAttack : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && attackReady) {
-            Debug.Log("Attacked");
             var HealthController = collision.gameObject.GetComponent<HealthController>();
 
             HealthController.TakeDamage(_damageAmount);
             StartCoroutine(AttackCooldownCoroutine());
-        } else {Debug.Log("On Cooldown");}
+        }
     }
 
 
