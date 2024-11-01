@@ -33,12 +33,13 @@ public class PlayerController : MonoBehaviour
         RotatePlayerToMouse();
     }
 
+
     private void SetAnimation()
     {
         bool isMoving = _movementInput != Vector2.zero;
-        Debug.Log(isMoving);
         _animator.SetBool("IsMoving", isMoving);
     }
+
 
     private void RotatePlayerToMouse()
     {
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
     }
     }
 
+
     private void SetPlayerVelocity()
     {
         _smoothMovementInput = Vector2.SmoothDamp(
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
                 );
         _rigidbody.velocity = _smoothMovementInput * _walkSpeed;
     }
+
 
     private void OnMove(InputValue inputValue) {
         _movementInput = inputValue.Get<Vector2>();
