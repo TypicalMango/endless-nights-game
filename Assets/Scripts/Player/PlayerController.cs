@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float _playerHealth;
     private Vector3 mousePosition;
     private Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _animator = GetComponentInChildren<Animator>();
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -66,7 +68,6 @@ public class PlayerController : MonoBehaviour
                 );
         _rigidbody.velocity = _smoothMovementInput * _walkSpeed;
     }
-
 
     private void OnMove(InputValue inputValue) {
         _movementInput = inputValue.Get<Vector2>();
