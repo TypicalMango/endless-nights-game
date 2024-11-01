@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -15,36 +16,28 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _rigidbody;
     private float _playerHealth;
     private Vector3 mousePosition;
+    private Animator _animator;
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log("Player Position: " + transform.position);
         SetPlayerVelocity();
+        SetAnimation();
         RotatePlayerToMouse();
+    }
 
-        // OLD MOVEMENT SCRIPT
-
-        // horzInput = Input.GetAxisRaw("Horizontal");
-        // vertInput = Input.GetAxisRaw("Vertical");
-        // if (horzInput != 0 && vertInput != 0)
-        //     {
-        //     _rigidbody.velocity = new Vector2(horzInput * _walkSpeed / Mathf.Sqrt(2), vertInput * _walkSpeed / Mathf.Sqrt(2));
-        // }
-        // else if (horzInput != 0 || vertInput != 0)
-        //     {
-        //     _rigidbody.velocity = new Vector2(horzInput * _walkSpeed, vertInput * _walkSpeed);
-        // }
-        // else
-        // {
-        //     _rigidbody.velocity = Vector2.zero;
-        // }
+    private void SetAnimation()
+    {
+        bool isMoving = _movementInput != Vector2.zero;
+        Debug.Log(isMoving);
+        _animator.SetBool("IsMoving", isMoving);
     }
 
     private void RotatePlayerToMouse()
