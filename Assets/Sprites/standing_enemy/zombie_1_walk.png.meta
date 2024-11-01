@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f79cc24d1357a242916af57b187cb12
-      internalID: 143555978
+      spriteID: 377b89cfb24437342b95894308d9ebac
+      internalID: -240957338
       vertices: []
       indices: 
       edges: []
@@ -135,9 +135,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 570
-        y: 71
+        y: 82
         width: 547
-        height: 535
+        height: 524
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 961e328b695bed74691a26e745138b49
-      internalID: 1160738409
+      spriteID: 6dc40d24ceef64d44b0cec22b0816e90
+      internalID: 45437485
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 660d662cc2958b74e861291e3b9adf04
-      internalID: -6147017
+      spriteID: d540d3786cc13434bab5dbb6930bff9e
+      internalID: 1516435137
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      zombie_1_walk_0: 143555978
-      zombie_1_walk_1: 1160738409
-      zombie_1_walk_2: -6147017
+      zombie_1_walk_0: -240957338
+      zombie_1_walk_1: 45437485
+      zombie_1_walk_2: 1516435137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

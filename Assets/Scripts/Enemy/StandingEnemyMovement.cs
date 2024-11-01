@@ -10,25 +10,32 @@ public class StandingEnemyMovement : MonoBehaviour
     private float _speed;
     [SerializeField]
     private float _rotationSpeed;
+    private bool isAware;
     private Rigidbody2D _rigidbody;
     private PlayerAwarenessController _playerAwarenessController;
     private Vector2 _smoothMovement;
     private Vector2 _movementSmoothVelocity;
-
+    private Animator _animator;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _playerAwarenessController = GetComponent<PlayerAwarenessController>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
 
     private void FixedUpdate()
     {
-        if (_playerAwarenessController.AwareOfPlayer) {
+        isAware = _playerAwarenessController.AwareOfPlayer;
+
+        // Change to walk animation
+        _animator.SetBool("IsMoving", isAware);
+
+        if (isAware) {
             // Rotate towards target
             transform.up = _playerAwarenessController.DirectionToPlayer * _rotationSpeed;
-
+            
             SetVelocity(transform.up * _speed);
         }
         else {
