@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageAmount: 10
+  _attackCooldown: 3
 --- !u!1 &6974371466284469799
 GameObject:
   m_ObjectHideFlags: 0

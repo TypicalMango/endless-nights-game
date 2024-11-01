@@ -29,9 +29,9 @@ public class HealthController : MonoBehaviour
             return;
         }
 
-        if (IsInvincible) {
-            return;
-        }
+        // if (IsInvincible) {
+        //     return;
+        // }
 
         _currentHealth -= damageAmount;
         OnHealthChanged.Invoke();
