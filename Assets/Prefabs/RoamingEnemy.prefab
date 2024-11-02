@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7372977944976943971}
   - component: {fileID: 3593271194244716574}
   - component: {fileID: 4443719594704779939}
+  - component: {fileID: 8878258475124084757}
   - component: {fileID: 2678733244291726960}
   m_Layer: 0
   m_Name: RoamingEnemy
@@ -141,6 +142,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageAmount: 8
   _attackCooldown: 2
+--- !u!114 &8878258475124084757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073202944493723907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0083af47eb5c6d34bb682ce4cf359ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _killScore: 15
 --- !u!114 &2678733244291726960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +176,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8878258475124084757}
+        m_TargetAssemblyTypeName: EnemyScoreAllocator, Assembly-CSharp
+        m_MethodName: AllocateScore
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
