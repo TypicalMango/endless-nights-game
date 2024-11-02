@@ -384,7 +384,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 372314189}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1611385583}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &372314189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +877,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1471482482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1611385583}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1471482482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,6 +940,7 @@ GameObject:
   - component: {fileID: 1611385582}
   - component: {fileID: 1611385581}
   - component: {fileID: 1611385580}
+  - component: {fileID: 1611385583}
   m_Layer: 5
   m_Name: Menu Panel
   m_TagString: Untagged
@@ -1008,6 +1033,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611385578}
   m_CullTransparentMesh: 1
+--- !u!114 &1611385583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611385578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f166f007d47ab74d9b114bcfa667daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2124821985
 GameObject:
   m_ObjectHideFlags: 0
