@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e194fb55ac21b46409f4a712039aa9a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerAwarenessDistance: 5
+  fovAngle: 120
+  fovRange: 10
 --- !u!114 &1382920356978541552
 MonoBehaviour:
   m_ObjectHideFlags: 0
