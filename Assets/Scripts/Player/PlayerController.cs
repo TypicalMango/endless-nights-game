@@ -1,10 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+// using System;
+// using System.Collections;
+// using System.Collections.Generic;
+// using System.Numerics;
+// using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+// using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float _playerHealth;
     private Vector3 mousePosition;
     private Animator _animator;
+    private Camera _camera;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _animator = GetComponentInChildren<Animator>();
+        _camera = Camera.main;
     }
 
 
@@ -67,7 +70,25 @@ public class PlayerController : MonoBehaviour
                     0.1f
                 );
         _rigidbody.velocity = _smoothMovementInput * _walkSpeed;
+        PreventPlayerGoingOffScreen();
     }
+
+    private void PreventPlayerGoingOffScreen()
+    {
+        Vector2 screenPosition = _camera.WorldToScreenPoint(transform.position);
+
+        if ((screenPosition.x < 0 && _rigidbody.velocity.x < 0) ||
+        screenPosition.x > _camera.pixelWidth && _rigidbody.velocity.x > 0)
+        {
+            _rigidbody.velocity = new Vector2(0, _rigidbody.velocity.y);
+        }
+        if ((screenPosition.y < 0 && _rigidbody.velocity.y < 0) ||
+        screenPosition.y > _camera.pixelHeight && _rigidbody.velocity.y > 0)
+        {
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+        }
+    }
+
 
     private void OnMove(InputValue inputValue) {
         _movementInput = inputValue.Get<Vector2>();
